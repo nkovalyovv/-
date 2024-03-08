@@ -1,0 +1,33 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;;
+
+int main(int argc, const char * argv[]) {
+    int pr_otr = 1;
+    int n = 10;
+    srand(time(NULL));
+    int a[n];
+    for (int i = 0; i < n; i++) {
+        a[i] = rand() % 21 - 10; // Генерация чисел от -10 до 10
+        cout << a[i] << " ";
+    }
+    int k = 0;
+    int *pk = a;
+    for (int i = 0; i < n; i++) {
+        if ((*pk > 0) && (*pk % 3 == 0)) {
+            k += 1;
+            pr_otr *= *pk;
+        }
+        pk++;
+    }
+    if (k == 0) {
+        cout << endl << "Произведение положительных элементов массива кратных трём: 0"<< endl;
+        cout << endl << "Количество положительных элементов массива кратных трём: 0"<< endl;
+    }
+    else {
+        cout << endl << "Произведение положительных элементов массива кратных трём: "<< pr_otr << endl;
+        cout << endl << "Количество положительных элементов массива кратных трём: "<< k << endl;
+    }
+    return 1;
+}
